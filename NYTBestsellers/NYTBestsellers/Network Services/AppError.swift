@@ -14,6 +14,8 @@ enum AppError: Error {
   case networkError(Error)
   case badStatusCode(String)
   case propertyListEncodingError(Error)
+  case propertyListDecodingError(Error)
+  case fileSystemError(Error)
   
   public func errorMessage() -> String {
     switch self {
@@ -27,6 +29,10 @@ enum AppError: Error {
       return "bad status code: \(message)"
     case .propertyListEncodingError(let error):
       return "property list encoding error: \(error)"
+    case .propertyListDecodingError(let error):
+      return "property list decoding error: \(error)"
+    case .fileSystemError(let error):
+      return "filesystem unable to save due to error: \(error)"
     }
   }
 }
